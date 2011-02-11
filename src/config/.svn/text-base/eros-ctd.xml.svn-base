@@ -1,8 +1,0 @@
-<templatedb>
-<component name="org.jini.projects.eros">
-		<entry name="groups" comment="Jini Groups service will join" type="String[]" default='new String[]{"public"}' optional="false"/>
-		<entry name="exporter" comment="Eros Service Exporter" type="Exporter" default='new BasicJeriExporter(TcpServerEndpoint.getInstance(0),new BasicILFactory())' optional="false"/>
-		<entry name="storeclass" comment="Name of the class that will perform the storage of the error log" type="String" default='"org.jini.projects.eros.server.GenericJDBCStore"' optional="false"/>
-		<entry name="discoveryManager" comment="DiscoveryManager required" type="LookupDiscovery" default='new LookupDiscoveryManager(groups, null,null)' optional="false"/>
-	</component>
-</templatedb>
