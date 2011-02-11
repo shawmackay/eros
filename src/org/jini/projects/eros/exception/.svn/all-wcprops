@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/eros/!svn/ver/2/trunk/src/org/jini/projects/eros/exception
+END
+StoreUnavailableException.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/eros/!svn/ver/2/trunk/src/org/jini/projects/eros/exception/StoreUnavailableException.java
+END
+RuntimeInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/eros/!svn/ver/2/trunk/src/org/jini/projects/eros/exception/RuntimeInfo.java
+END
+package.html
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/eros/!svn/ver/2/trunk/src/org/jini/projects/eros/exception/package.html
+END

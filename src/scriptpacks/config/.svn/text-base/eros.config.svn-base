@@ -1,0 +1,43 @@
+/* Configuration source file for activatable Jini ERI server */
+
+import java.net.SocketPermission;
+import java.rmi.activation.ActivationID;
+import java.security.Permission;
+import net.jini.activation.ActivationExporter;
+import net.jini.discovery.LookupDiscovery;
+import net.jini.discovery.LookupDiscoveryManager;
+import net.jini.security.BasicProxyPreparer;
+import net.jini.jeri.BasicJeriExporter;
+import net.jini.jeri.BasicILFactory;
+import net.jini.jeri.tcp.TcpServerEndpoint;
+
+import net.jini.core.entry.Entry;
+import net.jini.lookup.entry.Location;
+import net.jini.lookup.entry.Name;
+import net.jini.lookup.entry.ServiceInfo;
+import net.jini.lookup.entry.UIDescriptor;
+
+org.jini.projects.eros{
+
+    /* Exporter for the server proxy */
+    exporter =
+    /* Use standard exporter */
+        new BasicJeriExporter(TcpServerEndpoint.getInstance(0),
+                                  new BasicILFactory());
+
+    groups = new String[] { "$[group]" };
+    storeClass = "org.jini.projects.eros.server.GenericJDBCStore";    
+    discoveryManager = new LookupDiscoveryManager(groups, null,null);
+
+}
+
+/* Configuration block for the lookup discovery utility */
+net.jini.discovery.LookupDiscovery {
+
+    registrarPreparer = new BasicProxyPreparer(
+        false /* verify */,
+        new Permission[] {
+            new SocketPermission("*:1024-", "connect")
+        });
+
+}

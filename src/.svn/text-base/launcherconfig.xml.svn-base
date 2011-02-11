@@ -1,0 +1,21 @@
+<launcherconfig>
+	<general>			
+		<theme>white</theme>
+		<appname>Eros</appname>	
+		<licenseFile>license.txt</licenseFile>
+		<readmeFile>readme.txt</readmeFile>
+			<directoryName>Eros</directoryName>
+			<image>/instlib/logo</image>
+		<prerequisites>instlib/prerequisites.html</prerequisites>
+		<finishreadmefile>starting.html</finishreadmefile>
+		<startfile name="Eros Service" command="runeros"/>
+		<policy default="config/policy.all"/>
+		<codebase value="lib/eros-dl.jar"/>
+		<config default="config/eros.config"/>
+		<script-var name="enabledebug" comment="enable Eros internal debugging(true or false)" default="false"/>
+		<script-var name="storeconfigxml" comment="Path to the xml file that describes the database connection" default="config/conninfo_hsqldb.xml"/>
+		<script-var name="group" comment="Name of Jini Group to use in default config" default="public"/>
+		<xml-import template="config/eros-ctd.xml"/>
+	</general>
+</launcherconfig>
+ 	

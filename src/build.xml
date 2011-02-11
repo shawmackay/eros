@@ -1,0 +1,241 @@
+<?xml version="1.0"?>
+<project name="eros" basedir="." default="dist">
+    <target name="init">
+    <taskdef name="install" classname="org.jini.projects.lamplighter.installer.LamplighterTask" classpath="..\lib\lamplighter.jar"/>
+        <property name="src" value="."/>
+    	<property name="www" value="../www"/>
+        <property name="build" value="../build"/>
+        <property name="classes" value="${build}/classes"/>
+
+        <property name="jsp" value="${src}/jsp"/>
+        <property name="resource" value="${src}"/>
+        <property name="distRoot" value="../dist"/>
+        <property name="dist" value="${distRoot}/${ant.project.name}"/>
+
+        <property name="bin" value="${dist}/bin"/>
+        <property name="conf" value="${dist}/config"/>
+        <property name="data" value="${dist}/data"/>
+        <property name="lib" value="${dist}/lib"/>
+        <property name="logs" value="${dist}/logs"/>
+        <property name="store" value="${dist}/store"/>
+    	<property name="hsql-loc" value="..\lib\hsqldb.jar"/>
+
+        <property name="javadoc" value="${build}/javadoc"/>
+        <property name="jar" value="${build}/${ant.project.name}.jar"/>
+        <property name="dl-jar" value="${distRoot}/eros-dl.jar"/>
+        <property name="itf-jar" value="${build}/${ant.project.name}-itf.jar"/>
+        <property name="warFile" value="${distRoot}/${ant.project.name}.war"/>
+
+        <property name="jinilib" value="/Volumes/Data/Development/Java/Jini2.1/lib"/>
+        <property name="jinilib-dl" value="/Volumes/Data/Development/Java/Jini2.1/lib-dl"/>    	
+        <property name="javalib" value="c:\java\libs"/>
+     <!--   <property name="oraclelib" value="/usr/local/java/xdk_92030/lib"/>-->
+		<property name="dl-codebase" value="http://localhost:8086/eros-dl.jar"/>
+     	<property name="sdm-codebase" value="http://localhost:8086/sdm-dl.jar"/>
+        
+    	
+    	
+     
+        <mkdir dir="${build}"/>
+        <mkdir dir="${classes}"/>
+
+        <path id="project.class.path">
+            <fileset dir="${jinilib}">
+                <include name="*.jar"/>
+            </fileset>
+            <fileset dir="..\lib">
+
+                <!--<include name="jini-utils.jar"/>-->
+                <!--<include name="ojdbc14.jar"/>-->
+                <include name="serviceui-1.1a.jar"/>
+                
+                <include name="glyph.jar"/>
+            </fileset>
+            <!--<fileset dir="${oraclelib}">
+                <include name="xmlparserv2.jar"/>
+                <include name="xsu12.jar"/>
+                <include name="xdb_9012.jar"/>                
+            </fileset>-->
+           
+        </path>
+         
+    </target>
+
+    <target depends="init" description="Clean all build products." name="clean">
+        <delete dir="${build}"/>
+        <delete dir="${distRoot}"/>
+    </target>
+
+    <target depends="init" name="compile">
+        <javac debug="true" deprecation="true" destdir="${classes}" srcdir="${src}" target="1.4" source="1.4" >
+      
+            <classpath refid="project.class.path" />
+        </javac>
+        
+    </target>
+
+    <target depends="init,compile" name="jar">
+        <jar basedir="${classes}" compress="true" jarfile="${jar}">
+            <exclude name="**/*.java"/>
+            <exclude name="**/*.form"/>
+            <exclude name="*.jar"/>
+        </jar>
+        <unjar src="${jinilib-dl}/sdm-dl.jar" dest="${dist}/tmp/sdm"/>
+        <unjar src="${jinilib}/jini-ext.jar" dest="${dist}/tmp"/>
+        <unjar src="../lib/serviceui-1.1a.jar" dest="${dist}/tmp"/>   
+        <jar basedir="${classes}" compress="true" jarfile="${dl-jar}">
+            <include name="org/jini/projects/eros/ErosSmartLogger.class"/>
+            <include name="org/jini/projects/eros/ErosServiceMonitor.class"/>
+            <include name="org/jini/projects/eros/ErosServiceMonitor*.class"/>
+            <include name="org/jini/projects/eros/ErosServiceType.class"/>
+            <include name="org/jini/projects/eros/admin/ErosAdmin.class"/>
+            <include name="org/jini/projects/eros/admin/ErosAdminImpl_Stub.class"/>
+            <include name="org/jini/projects/eros/LogDetail.class"/>
+            <include name="org/jini/projects/eros/LoggingDetail.class"/>
+        	<include name="org/jini/projects/eros/InstanceDetail.class"/>
+        	<include name="org/jini/projects/eros/InstanceDetailImpl.class"/>
+            <include name="org/jini/projects/eros/LogLevel.class"/>        	
+            <include name="org/jini/projects/eros/ErosFileProcessor*.class"/>
+            <include name="org/jini/projects/eros/RuntimeInfo.class"/>
+            <include name="org/jini/projects/eros/ErosServiceStats.class"/>
+        	<include name="org/jini/projects/eros/ui/erroranalyser/*.class"/>
+        	<include name="org/jini/projects/eros/ui/erroranalyser/model/*.class"/>
+            <include name="org/jini/projects/eros/ui/*.class"/>
+            <include name="org/jini/projects/eros/ui/ErosMainUI*.class"/>
+            <include name="org/jini/projects/eros/ui/ErosMainUIFactory.class"/>
+            <include name="org/jini/projects/eros/ui/ErosServiceUI.class"/>
+        	<include name="org/jini/projects/eros/ui/GradientLabel.class"/>
+            <include name="org/jini/projects/eros/ErosService.class"/>
+            <include name="org/jini/projects/eros/ErosInterface.class"/>
+            <include name="org/jini/projects/eros/constrainable/*.class"/>
+            <include name="org/jini/projects/eros/ErosServiceImpl_Stub.class"/>
+            <include name="org/jini/projects/eros/logging/ErosHandler*.class"/>
+            <include name="org/jini/projects/eros/logging/ErosLoggerImpl.class"/>
+            <include name="org/jini/projects/eros/logging/OutputFormatter.class"/>
+            <include name="org/jini/projects/eros/ErosLogger.class"/>
+            <include name="org/jini/projects/eros/ErosLogServer.class"/>
+            <include name="org/jini/projects/eros/exception/RuntimeInfo.class"/>
+            
+            <fileset dir="${resource}">
+                <include name="org/jini/projects/eros/ui/*.gif"/>
+                <include name="org/jini/projects/eros/*.png"/>
+            </fileset>
+            <fileset dir="${dist}/tmp/sdm">
+            	<include name="com/**.class"/>
+            	<include name="net/**.class"/>            	
+            </fileset>
+           <fileset dir="${dist}/tmp"> 
+           		<include name="net/jini/entry/*.class"/>
+	           	<include name="net/jini/lookup/*Stub.class"/>
+        	    <include name="net/jini/lookup/entry/**/*.class"/>
+    	        <include name="net/jini/lookup/ui/**.class"/>       
+				<include name="net/jini/lookup/ui/attribute/*.class"/>   
+				<include name="com/artima/lookup/util/*.class"/>
+			</fileset>
+        </jar>
+        <jar basedir="${classes}" compress="true" jarfile="${itf-jar}">
+            <include name="org/jini/projects/eros/ErosLogger.class"/>
+            <include name="org/jini/projects/eros/ErosService.class"/>
+            <include name="org/jini/projects/eros/ErosLogServer.class"/>
+            <include name="org/jini/projects/eros/LogDetail.class"/>
+            <include name="org/jini/projects/eros/InstanceDetail.class"/>
+            <include name="org/jini/projects/eros/ui/erroranalyser/model/ErrorModel.class"/>
+            <include name="org/jini/projects/eros/ui/erroranalyser/model/ErrorRecord.class"/>
+           <include name="org/jini/projects/eros/LogLevel.class"/>
+            <include name="org/jini/projects/eros/logging/ErosHandler.class"/>
+            <include name="org/jini/projects/eros/ErosInterface.class"/>      
+            <include name="org/jini/projects/eros/ui/ErosServiceUI.class"/>      
+            <include name="org/jini/projects/eros/ErosServiceStats.class"/>
+        </jar>
+    </target>
+
+    <target depends="init" description="Javadoc creation." name="javadoc">
+        <mkdir dir="${javadoc}"/>
+        <javadoc    destdir="${javadoc}"
+                    packagenames="org.jini.projects.eros.*"
+                    overview="${src}/overview.html"
+                    version="true"
+                    author="true"
+                    use="true"
+                    Windowtitle="Eros API">
+            <sourcepath>
+                <pathelement location="${src}"/>
+            </sourcepath>
+            <classpath refid="project.class.path" />
+            <!--
+            <link href="http://nts4_007.countrywide-assured.co.uk:8001/Dept/it/Architecture/Java/JDKDocs/docs/api"/>
+            <link href="http://nts4_007.countrywide-assured.co.uk:8001/Dept/it/Architecture/Java/jini/docs/api"/>
+            -->
+        </javadoc>
+    </target>
+    
+    <target depends="dist,javadoc" description="Build all" name="all"/>
+
+    <target depends="init,compile,jar" description="Package Project" name="dist">
+        <mkdir dir="${distRoot}"/>
+        <mkdir dir="${dist}"/>
+        <mkdir dir="${conf}"/>
+    	<mkdir dir="${conf}/sql"/>
+        <mkdir dir="${data}"/>
+        <mkdir dir="${lib}"/>
+        <mkdir dir="${logs}"/>
+        <mkdir dir="${store}"/>
+		<mkdir dir="${dist}/doc"/>
+    	<copy todir="${dist}/doc">
+    		<fileset dir="${www}">
+    			<include name="**/*.*"/>
+    		</fileset>
+    	</copy>
+    	<copy file="${src}/changes.txt" todir="${dist}"/>
+        <copy file="${src}/policy.all" todir="${conf}"/>       
+        <copy file="${src}/changes.txt" todir="${dist}"/>
+        <copy file="${jar}" todir="${lib}"/>
+        <copy file="${dl-jar}" todir="${lib}"/>
+        <copy file="${itf-jar}" todir="${lib}"/>
+        
+		<mkdir dir="${dist}/db"/>
+    	<copy todir="${dist}/db">
+    		<fileset dir="${src}/db" includes="*"/>
+    	</copy>
+        <copy todir="${conf}">
+            <fileset dir="${src}/config" includes="*" />
+            </copy>
+    	<copy todir="${conf}/sql">
+    	            <fileset dir="${src}/config/sql" includes="*" />
+    	            </copy>
+    	<copy todir="${dist}/lib" file="../lib/glyph.jar"/>
+    	<copy todir="${dist}/lib" file="${hsql-loc}"/>
+    	<!-- Need to put files in directory so Jar task in lamplighter will pick up directory -->
+    	<echo file="${logs}/index.txt">Eros' logs are written here</echo>
+    	<echo file="${data}/index.txt">Eros' internal data files are written here</echo>
+    	<copy file="${src}/starting.html" todir="${dist}" />
+            		<install productname="Eros" license="${src}/LICENSE.txt"
+            			readme="${src}/README.txt" directoryToJar="${dist}"
+            			outputname="eros-1.0" logofile="${src}/org/jini/projects/eros/eros_icon.png"
+            			launcherconfig="${src}/launcherconfig.xml" prerequisites="${src}/prerequisites.html"
+            			scriptpackdir="${src}/scriptpacks"/>	
+    </target>
+	
+    <target depends="dist" name="war">
+        <delete file="${warFile}"/>
+        <war warfile="${warFile}" webxml="${jsp}/web.xml" update="true">
+            <fileset dir="${jsp}">
+                <include name="*.jsp"/>
+                <include name="*.html"/>
+            </fileset>
+            <lib dir="${javalib}">
+                <include name="classes12.zip"/>
+            </lib>
+            <classes dir="${classes}">
+                <include name="org/jini/projects/eros/jsp/ErosBean.class"/>
+            </classes>
+        </war>
+
+        <delete includeEmptyDirs="true" quiet="true" failonerror="false">
+            <fileset dir="${distRoot}/ErosWebApp" includes="**/*"/>
+        </delete>
+        <unwar src="${distRoot}/eros.war" dest="${distRoot}/ErosWebApp" overwrite="true"/>
+
+    </target>
+
+</project>

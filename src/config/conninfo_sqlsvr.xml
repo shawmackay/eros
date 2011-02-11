@@ -1,0 +1,19 @@
+<?xml version='1.0'?>
+<STORE>
+	<DRIVER>com.thinweb.tds.Driver</DRIVER>
+    <URL>jdbc:twtds:sqlserver://localhost/erosdb</URL>
+    <NAME>eros</NAME>
+    <USER>eros</USER>
+    <PASSWORD>eros</PASSWORD>
+    <TABLE>ERROR_STORE</TABLE>
+    <COLUMNS>
+    	<column columnname="time_stamp" paramname="time_stamp"/>
+    	<column columnname="application" paramname="application"/>
+    	<column columnname="message" paramname="message"/>
+    	<column columnname="error_level" paramname="error_level"/>
+    	<column columnname="stacktrace" paramname="stacktrace"/>
+        <column columnname="arguments" paramname="arguments"/>
+       	<column columnname="jinigroup" paramname="group"/>	    		    	
+    	<column columnname="host" paramname="host"/>       	
+ 	</COLUMNS>
+</STORE>

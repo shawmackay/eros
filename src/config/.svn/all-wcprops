@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/eros/!svn/ver/21/trunk/src/config
+END
+exportmgr.config
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/eros/!svn/ver/2/trunk/src/config/exportmgr.config
+END
+policy.all
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/eros/!svn/ver/2/trunk/src/config/policy.all
+END
+eros.config
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/eros/!svn/ver/2/trunk/src/config/eros.config
+END
+conninfo_postgres.xml
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/eros/!svn/ver/2/trunk/src/config/conninfo_postgres.xml
+END
+conninfo_oracle.xml
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/eros/!svn/ver/2/trunk/src/config/conninfo_oracle.xml
+END
+activatable-eros.config
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/eros/!svn/ver/2/trunk/src/config/activatable-eros.config
+END
+eros-ctd.xml
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/eros/!svn/ver/2/trunk/src/config/eros-ctd.xml
+END
+conninfo_hsqldb.xml
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/eros/!svn/ver/21/trunk/src/config/conninfo_hsqldb.xml
+END
+conninfo_sqlsvr.xml
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/eros/!svn/ver/2/trunk/src/config/conninfo_sqlsvr.xml
+END
+ErrorTable.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/eros/!svn/ver/2/trunk/src/config/ErrorTable.xsl
+END

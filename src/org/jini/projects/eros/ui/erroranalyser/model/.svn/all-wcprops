@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/eros/!svn/ver/16/trunk/src/org/jini/projects/eros/ui/erroranalyser/model
+END
+DefaultErrorRecord.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/eros/!svn/ver/16/trunk/src/org/jini/projects/eros/ui/erroranalyser/model/DefaultErrorRecord.java
+END
+ErrorTableModel.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/eros/!svn/ver/2/trunk/src/org/jini/projects/eros/ui/erroranalyser/model/ErrorTableModel.java
+END
+DefaultErrorModel.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/eros/!svn/ver/16/trunk/src/org/jini/projects/eros/ui/erroranalyser/model/DefaultErrorModel.java
+END
+ErrorRecord.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/eros/!svn/ver/16/trunk/src/org/jini/projects/eros/ui/erroranalyser/model/ErrorRecord.java
+END
+ErrorModel.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/eros/!svn/ver/2/trunk/src/org/jini/projects/eros/ui/erroranalyser/model/ErrorModel.java
+END

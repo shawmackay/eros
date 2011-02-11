@@ -1,0 +1,49 @@
+<html>
+<head><TITLE>Eros : Central Error Logging</TITLE>
+<link href="eros.css" type="text/css" rel="stylesheet"/>
+</head>
+<BODY>
+<div id="container">
+<div class="special">Eros</div>
+<div class="infobox"><div class="sideheader">Downloads
+</div>
+<h2>Eros 1.0 RC released</h2>
+Download the Eros 1.0 release candidate from <a href="release/eros-1.0.jar">here</a>
+<div class="sideheader">Contacts</div>
+Please view or join the Eros <a href="https://eros.dev.java.net/servlets/ProjectMailingListList">mailing lists</a>, or alternatively, if you have any issues, log them in the <a href="https://eros.dev.java.net/servlets/ProjectIssues">issue tracker</a>
+</div>
+
+
+
+<H2>Central Error Logging Service</H2>
+<p>
+Eros allows Jini services, to log any warnings or errors in a central repository, without needing to have prior knowledge of where the repository is.
+</p>
+<p>
+In an architecture where either there is no user, or an error happens within an n-tier environment away from user
+machines, error logging and reporting becomes much more disjointed. In a Jini network, which may contain a large number 
+of services, with dependencies between them, finding and tracing errors can quickly become difficult, because file based error
+logs are stored on the individual machines on the network. This problem becomes worse when services are clustered and replicated across the network, making identification of the source of a problem difficult. </p>
+<h3>How does Eros work?</h3>
+<p>
+Eros provides a specialised Logging handler, that integrates seamlessly with the standard java.util.logging capabilities, introduced in
+J2SE 1.4. Any logs that are specified at a Level of <code>WARNING</code> or <code>SEVERE</code>, will be sent to a specialised Jini service 
+that persists these logs in a central storage area, usually a database, where they can be queried later by administration personnel.
+</p>    
+<p>
+In addition, to the exception, Eros persists the general log message, the application that registered the error, 
+the IP address and hostname, and the Jini group that the code was working under when the error or warning occured.
+</p>
+For more information: <a href="setup.html">Eros Setup</a>
+<h3>ServiceUI</h3>
+For documentation on how to use Eros's serviceUI, see <a href="ui.html">here</a>
+</div>
+<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-443086-3";
+urchinTracker();
+</script>
+
+</BODY>
+</html>

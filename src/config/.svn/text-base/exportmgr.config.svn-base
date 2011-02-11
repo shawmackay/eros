@@ -1,0 +1,15 @@
+import org.jini.projects.eros.constrainable.*;
+import net.jini.jeri.*;
+import net.jini.jeri.http.*;
+
+ExportManager {
+    mgrDefs = new String[]{"Any"};
+}
+
+ExportManager.Any{
+    exporterClass = BasicJeriExporter.class;
+    serverEndpoint = HttpServerEndpoint.getInstance(0);
+    ILFactory = new BasicILFactory();
+    proxyCreator = new ErosCreator();
+}
+

@@ -1,0 +1,22 @@
+<html>
+<body bgcolor="white">
+<h1>Eros - First steps</h1>
+
+<h2>Scripts</h2>
+The Eros distribution contains two 'run' scripts - <i>runeros</i> and <i>runui</i><br>
+Both scripts are started from the command line. runeros will start the service instance, and runui will run start a serviceui client to an eros instance
+
+<h2>Default database</h2>
+Eros ships with hsqldb, and a database log that has the error tables pre-setup. Using this, Eros should automatically start and allow you to log errors straightaway.
+
+
+<h2>Using another database</h2>
+In the <i>config/sql</i> directory you will find a set of scripts that will auto generate the required database objects for a number of different databases<br><a>Currently there are scripts for:
+<ul>
+<li>Oracle</li>
+<li>PostgreSQL</li>
+</ul>
+You will need to include your database vendor jars and alter the <i>storeconfigxml</i> property in the post install configuration (run <i>eros_post_install</i>)
+
+</body>
+</html>

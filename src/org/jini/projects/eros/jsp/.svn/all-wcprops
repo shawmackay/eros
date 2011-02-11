@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/eros/!svn/ver/2/trunk/src/org/jini/projects/eros/jsp
+END
+package.html
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/eros/!svn/ver/2/trunk/src/org/jini/projects/eros/jsp/package.html
+END
+messages.properties
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/eros/!svn/ver/2/trunk/src/org/jini/projects/eros/jsp/messages.properties
+END
+ErrorBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/eros/!svn/ver/2/trunk/src/org/jini/projects/eros/jsp/ErrorBean.java
+END
+ErosBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/eros/!svn/ver/2/trunk/src/org/jini/projects/eros/jsp/ErosBean.java
+END
+ErrorResBundle.java
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/eros/!svn/ver/2/trunk/src/org/jini/projects/eros/jsp/ErrorResBundle.java
+END
