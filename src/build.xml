@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <project name="eros" basedir="." default="dist">
     <target name="init">
-    <taskdef name="install" classname="org.jini.projects.lamplighter.installer.LamplighterTask" classpath="..\lib\lamplighter.jar"/>
+    <taskdef name="install" classname="org.blarty.lamplighter.installer.LamplighterTask" classpath="..\lib\lamplighter.jar"/>
         <property name="src" value="."/>
     	<property name="www" value="../www"/>
         <property name="build" value="../build"/>
@@ -152,7 +152,7 @@
     <target depends="init" description="Javadoc creation." name="javadoc">
         <mkdir dir="${javadoc}"/>
         <javadoc    destdir="${javadoc}"
-                    packagenames="org.jini.projects.eros.*"
+                    packagenames="org.blarty.eros.*"
                     overview="${src}/overview.html"
                     version="true"
                     author="true"

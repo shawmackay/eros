@@ -1,5 +1,5 @@
-<%@ page import="org.jini.projects.eros.jsp.ErrorBean"%>
-<jsp:useBean id="errorBean" scope="session" class="org.jini.projects.eros.jsp.ErrorBean"/>
+<%@ page import="org.blarty.eros.jsp.ErrorBean"%>
+<jsp:useBean id="errorBean" scope="session" class="org.blarty.eros.jsp.ErrorBean"/>
 <html>
     <head>
         <title>Error Detail View</title>

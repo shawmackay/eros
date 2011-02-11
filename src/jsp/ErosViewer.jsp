@@ -1,5 +1,5 @@
-<%@ page import="org.jini.projects.eros.jsp.ErosBean"%>
-<jsp:useBean id="erosBean" scope="session" class="org.jini.projects.eros.jsp.ErosBean"/>
+<%@ page import="org.blarty.eros.jsp.ErosBean"%>
+<jsp:useBean id="erosBean" scope="session" class="org.blarty.eros.jsp.ErosBean"/>
 <html>
     <head>
         <title>Eros Error Viewer</title>

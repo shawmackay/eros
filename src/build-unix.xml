@@ -144,7 +144,7 @@
     <target depends="init" description="Javadoc creation." name="javadoc">
         <mkdir dir="${javadoc}"/>
         <javadoc    destdir="${javadoc}"
-                    packagenames="org.jini.projects.eros.*"
+                    packagenames="org.blarty.eros.*"
                     overview="${src}/overview.html"
                     version="true"
                     author="true"
@@ -193,27 +193,27 @@
 export EROS=/home/calum/workspace/eros/dist/Eros
 export CLASSPATH=${scriptclasspath}
 export EROS_CODEBASE=${dl-codeBase}
-java org.jini.projects.eros.StartEros $EROS_CODEBASE $EROS/conf/policy.all $EROS/data $1 -Dorg.jini.projects.eros.debug=false -Dorg.jini.projects.eros.store.xml=$EROS/conf/conninfo_$1.xml -Dorg.jini.projects.eros.transform.xml=$EROS/conf/errortable.xsl -Duser.dir=$EROS
+java org.blarty.eros.StartEros $EROS_CODEBASE $EROS/conf/policy.all $EROS/data $1 -Dorg.blarty.eros.debug=false -Dorg.blarty.eros.store.xml=$EROS/conf/conninfo_$1.xml -Dorg.blarty.eros.transform.xml=$EROS/conf/errortable.xsl -Duser.dir=$EROS
         </echo>
         <echo file="${bin}/starteros-nonact.bat">
 CALL SETPATHS
 set EROS=d:\java\eros
 set EROS_CLASSPATH=%EROS%/lib/eros.jar;%EROS%/lib/create-v1_2.jar;%CLASSPATH%
 set EROS_CODEBASE=http://localhost/eros-dl.jar
-java -server -classpath %EROS_CLASSPATH% -Duser.dir=%EROS% -Djava.rmi.server.codebase=%EROS_CODEBASE% -Djava.security.policy=%EROS%/conf/policy.all -Dorg.jini.projects.eros.debug=false -Dorg.jini.projects.eros.store.xml=%EROS%/conf/conninfo_%1.xml -Dorg.jini.projects.eros.transform.xml=%EROS%/conf/errortable.xsl org.jini.projects.eros.ErosServiceImpl %1 %2
+java -server -classpath %EROS_CLASSPATH% -Duser.dir=%EROS% -Djava.rmi.server.codebase=%EROS_CODEBASE% -Djava.security.policy=%EROS%/conf/policy.all -Dorg.blarty.eros.debug=false -Dorg.blarty.eros.store.xml=%EROS%/conf/conninfo_%1.xml -Dorg.blarty.eros.transform.xml=%EROS%/conf/errortable.xsl org.blarty.eros.ErosServiceImpl %1 %2
         </echo>
         <copy file="${src}/ErosService.exe" todir="${bin}"/>
         <echo file="${bin}/InstallErosService.bat">
 SET EROS_HOME=d:\java\eros
 SET JINI_GROUP=development
 SET CODEBASE="${sdm-codebase} ${dl-codebase}"
-ErosService.exe -install ErosService d:\java\j2sdk1.4.0\jre\bin\server\jvm.dll -Xmx512M -server -Djava.class.path=%EROS_HOME%\lib\Eros.jar;%CLASSPATH% -Djava.rmi.server.codebase=%CODEBASE% -Djava.security.policy=%EROS_HOME%\conf\policy.all -Dorg.jini.projects.eros.debug=false -Dorg.jini.projects.eros.store.xml=%EROS_HOME%/conf/conninfo_%JINI_GROUP%.xml -Dorg.jini.projects.eros.transform.xml=%EROS_HOME%/conf/ErrorTable.xsl -start org.jini.projects.eros.ErosServiceImpl -params %JINI_GROUP% %EROS_HOME%/data -stop org.jini.projects.eros.ErosServiceImpl -out %EROS_HOME%/logs/out.txt -err %EROS_HOME%/logs/err.txt -current %EROS_HOME%
+ErosService.exe -install ErosService d:\java\j2sdk1.4.0\jre\bin\server\jvm.dll -Xmx512M -server -Djava.class.path=%EROS_HOME%\lib\Eros.jar;%CLASSPATH% -Djava.rmi.server.codebase=%CODEBASE% -Djava.security.policy=%EROS_HOME%\conf\policy.all -Dorg.blarty.eros.debug=false -Dorg.blarty.eros.store.xml=%EROS_HOME%/conf/conninfo_%JINI_GROUP%.xml -Dorg.blarty.eros.transform.xml=%EROS_HOME%/conf/ErrorTable.xsl -start org.blarty.eros.ErosServiceImpl -params %JINI_GROUP% %EROS_HOME%/data -stop org.blarty.eros.ErosServiceImpl -out %EROS_HOME%/logs/out.txt -err %EROS_HOME%/logs/err.txt -current %EROS_HOME%
         </echo>
         <echo file="${bin}/runeros.sh">
 export EROS=.
 export EROSCLASSPATH=${scriptclasspath}:lib/eros.jini.org.jar
 export EROS_CODEBASE=http://localhost/eros-dl.jar
-java -classpath ${EROSCLASSPATH} -Djava.security.policy=/home/calum/policy.all -Djava.rmi.server.codebase=$EROS_CODEBASE -Dorg.jini.projects.eros.debug=false -Dorg.jini.projects.eros.store.xml=conf/conninfo_development.xml -Dorg.jini.projects.eros.transform.xml=conf/ErrorTable.xsl  org.jini.projects.eros.ErosServiceImpl $1
+java -classpath ${EROSCLASSPATH} -Djava.security.policy=/home/calum/policy.all -Djava.rmi.server.codebase=$EROS_CODEBASE -Dorg.blarty.eros.debug=false -Dorg.blarty.eros.store.xml=conf/conninfo_development.xml -Dorg.blarty.eros.transform.xml=conf/ErrorTable.xsl  org.blarty.eros.ErosServiceImpl $1
 		:</echo>            
         <fixcrlf srcDir="${bin}" includes="*.bat"/>
         <zip zipfile="${ant.project.name}.zip" basedir="${distRoot}"/>
